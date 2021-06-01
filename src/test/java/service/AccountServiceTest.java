@@ -6,8 +6,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ActiveProfiles("test")
-@DataJpaTest
+
+@Enable
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration
 public class AccountServiceTest {
