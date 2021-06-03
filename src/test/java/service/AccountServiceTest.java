@@ -5,9 +5,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import utils.EnableH2Database;
 
 
-@Enable
+@EnableH2Database
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration
 public class AccountServiceTest {
