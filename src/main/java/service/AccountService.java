@@ -10,12 +10,15 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepository;
 
-    public void updateAccountDetails() {
+    public void updateAccountDetails(Long userId, String accountNumber) {
 
         //find by id, use embedded id
         //  if already present update, else create new record
         // use mapstruct lombok , feature flag with @EnableCOnfigurationProperties
         // custom annotation
+
+        //String a = accountRepository.findById();
+
 
     }
 }
