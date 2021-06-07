@@ -1,5 +1,9 @@
 package entity;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -7,6 +11,9 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
 @Table(name = "ACCOUNT", schema = "TESTDB")
 public class Account implements Serializable {
 
