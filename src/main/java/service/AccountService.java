@@ -4,6 +4,7 @@ import dto.AccountDto;
 import entity.Account;
 import entity.AccountCompositeKey;
 import lombok.extern.slf4j.Slf4j;
+import mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.AccountRepository;
@@ -15,7 +16,10 @@ import java.util.Optional;
 public class AccountService {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
+
+    @Autowired
+    private AccountMapper accountMapper;
 
     public void updateAccountDetails(AccountDto accountDto) {
 
@@ -37,7 +41,10 @@ public class AccountService {
             }
 
         } else {
-            AccountCompositeKey newAccountCompositeKey = AccountCompositeKey.builder()
+
+            Account newAccount = accountMapper.convertDtoToEntity(accountDto);
+
+           /* AccountCompositeKey newAccountCompositeKey = AccountCompositeKey.builder()
                     .userId(userId).accountNumber(accountNumber).build();
 
             Account newAccount = new Account();
@@ -47,7 +54,7 @@ public class AccountService {
             newAccount.setLastName(accountDto.getLastName());
             newAccount.setIfscCode(accountDto.getIfscCode());
             newAccount.setIsAccountActive(accountDto.getIsAccountActive());
-            newAccount.setIsDebitCardActive(accountDto.getIsDebitCardActive());
+            newAccount.setIsDebitCardActive(accountDto.getIsDebitCardActive());*/
 
             log.info("Save new account");
             accountRepository.save(newAccount);
