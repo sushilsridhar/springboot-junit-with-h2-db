@@ -13,7 +13,6 @@ public interface AccountMapper {
             @Mapping(source = "userId", target = "accountCompositeKey.userId"),
             @Mapping(source = "accountNumber", target = "accountCompositeKey.accountNumber"),
             @Mapping(source = "firstName", target = "firstName"),
-            @Mapping(source = "firstName", target = "firstName"),
             @Mapping(source = "lastName", target = "lastName"),
             @Mapping(source = "ifscCode", target = "ifscCode"),
             @Mapping(source = "isAccountActive", target = "isAccountActive"),

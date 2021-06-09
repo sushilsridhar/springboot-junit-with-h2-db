@@ -44,6 +44,8 @@ public class AccountService {
 
             Account newAccount = accountMapper.convertDtoToEntity(accountDto);
 
+            /* Replaced below code with mapstruct */
+
            /* AccountCompositeKey newAccountCompositeKey = AccountCompositeKey.builder()
                     .userId(userId).accountNumber(accountNumber).build();
 
