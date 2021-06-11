@@ -38,6 +38,7 @@ public class AccountService {
             if(account.getIsAccountActive()) {
                 log.info("Account is active");
                 account.setIsDebitCardActive(accountDto.getIsDebitCardActive());
+                account.setFirstName("bucky");
             }
 
         } else {
