@@ -3,6 +3,7 @@ package service;
 import dto.AccountDto;
 import entity.Account;
 import entity.AccountCompositeKey;
+import mapper.AccountMapper;
 import mapper.AccountMapperImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,8 +19,7 @@ import utils.EnableH2Database;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 @EnableH2Database
@@ -27,11 +27,14 @@ import static org.mockito.Mockito.verify;
 @ContextConfiguration(classes = { AccountService.class, AccountMapperImpl.class })
 public class AccountServiceTest {
 
-    @SpyBean
+    @Autowired
     private AccountService accountService;
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @SpyBean
+    private AccountMapper accountMapper;
 
     @Test
     @DisplayName("test account service - debit card update")
@@ -54,7 +57,7 @@ public class AccountServiceTest {
 
         Account accountAfterProcessing = accountOptionalAfterProcessing.orElse(new Account());
 
-        verify(accountService, times(1)).updateAccountDetails(any());
+        verify(accountMapper, never()).convertDtoToEntity(any());
         Assertions.assertEquals(101L, accountAfterProcessing.getAccountCompositeKey().getUserId(), "User Id should match. ");
         Assertions.assertEquals("123456", accountAfterProcessing.getAccountCompositeKey().getAccountNumber(), "Account number should match. ");
         Assertions.assertEquals("John", accountAfterProcessing.getFirstName(), "First name should match. ");
@@ -85,6 +88,7 @@ public class AccountServiceTest {
 
         Account accountAfterProcessing = accountOptionalAfterProcessing.orElse(new Account());
 
+        verify(accountMapper, times(1)).convertDtoToEntity(any());
         Assertions.assertEquals(102L, accountAfterProcessing.getAccountCompositeKey().getUserId(), "User Id should match. ");
         Assertions.assertEquals("112233", accountAfterProcessing.getAccountCompositeKey().getAccountNumber(), "Account number should match. ");
         Assertions.assertEquals("James", accountAfterProcessing.getFirstName(), "First name should match. ");
