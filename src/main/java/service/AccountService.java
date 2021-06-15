@@ -39,7 +39,7 @@ public class AccountService {
                 log.info("Account is active");
                 account.setIsDebitCardActive(accountDto.getIsDebitCardActive());
             }
-
+            // TODO : account saved without save method, find out the reason
         } else {
 
             Account newAccount = accountMapper.convertDtoToEntity(accountDto);
