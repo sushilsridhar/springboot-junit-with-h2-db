@@ -11,7 +11,7 @@
 
 **Lombok**  
 Add maven-compiler-plugin, and add annotationProcessorPaths under it, to enable lombok. Enable lombok in IntelliJ using preference.  
-@Data @Builder @NoArgsConstructor @AllArgsConstructor
+@Data @Builder @NoArgsConstructor @AllArgsConstructor @Slf4j
 
 **Mapstruct**  
 Add maven-compiler-plugin, and add annotationProcessorPaths under it, to enable mapstruct. Create a interface and annotate with @Mapper and add a abstract method, whose implementation will be provided by mapstruct. Map value from one object or pojo to another.
@@ -41,3 +41,9 @@ jacoco-maven-plugin,
 - prepare agent  
 - generate report, default is html (target/site/jacoco/index.html) 
 - check coverage, provide the code coverage ratio required and files to be excluded in coverage, in configuration.
+
+**Spring Junit Jupiter**  
+ExtendWith annotation, Assertions class.
+
+**Mockito**  
+@SpyBean, verify() method to verify the number of times a method is called.
